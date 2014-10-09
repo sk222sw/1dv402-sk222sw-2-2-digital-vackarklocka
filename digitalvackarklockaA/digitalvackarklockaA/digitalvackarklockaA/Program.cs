@@ -12,54 +12,52 @@ namespace digitalvackarklockaA
         {
             //Instansiera objekt av klassen AlarmClock - 
             //testa konstruktorerna, egenskaperna och metoderna.
-            string horizontalLine = "════════════════════════════════════════════════════════════════════════════";
+            string horizontalLine;      //Skapar en sträng som används med metoden ViewTestHeader.
 
             Console.BackgroundColor = ConsoleColor.DarkGreen;
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(" ╔══════════════════════════════════════╗ ");
             Console.WriteLine(" ║           Väckarklockan              ║ ");
+            Console.WriteLine(" ║        BEEP BEEP BEEP BEEP           ║ ");
             Console.WriteLine(" ╚══════════════════════════════════════╝ ");
             Console.ResetColor();
             Console.WriteLine();
 
-            //Testfest
+            //Testfest:
 
+            //Test 1:
             AlarmClock time = new AlarmClock();
-            Console.WriteLine("Test 1.");
-            Console.WriteLine("Test av standardkonstruktorn.\n");
-            Console.WriteLine(time);
-            Console.WriteLine("\n{0}\n", horizontalLine);
+            horizontalLine = "\n════════════════════════════════════════\n\nTest 1.\nTest av standardkonstruktorn.";
+            ViewTestHeader(horizontalLine);
+            Console.WriteLine("\n{0}\n", time);
 
-
+            //Test 2:
             AlarmClock time2 = new AlarmClock(9, 42);
-            Console.WriteLine("Test 2.");
-            Console.WriteLine("Test av konstruktorn med två parametrar, <9, 42>.\n");
-            Console.WriteLine(time2);
-            Console.WriteLine("\n{0}\n", horizontalLine);
+            horizontalLine = "\n════════════════════════════════════════\n\nTest 2.\nTest av konstruktorn med två parametrar, <9, 42>.";
+            ViewTestHeader(horizontalLine);
+            Console.WriteLine("\n{0}\n", time2);
 
-
+            //Test 3:
             AlarmClock time3 = new AlarmClock(13, 24, 7, 35);
-            Console.WriteLine("Test 3.");
-            Console.WriteLine("Test av konstruktorn med fyra parametrar, <13, 24, 7, 35>.\n");
-            Console.WriteLine(time3);
-            Console.WriteLine("\n{0}\n", horizontalLine);
+            horizontalLine = "\n════════════════════════════════════════\n\nTest 3.\nTest av konstruktorn med fyra parametrar, <13, 24, 7, 35>.";
+            ViewTestHeader(horizontalLine);
+            Console.WriteLine("\n{0}\n", time3);
 
-
+            //Test 4:
             AlarmClock time4 = new AlarmClock(23, 58, 7, 35);
-            Console.WriteLine("Test 4.");
-            Console.WriteLine("Ställer klockan till 23:58 och låter den gå 13 minuter. \n");
+            horizontalLine = "\n════════════════════════════════════════\n\nTest 4.\nTest av konstruktorn med fyra parametrar, <23, 58, 7, 35>.\n";
+            ViewTestHeader(horizontalLine);
             Run(time4, 13);
-            Console.WriteLine("\n{0}\n", horizontalLine);
 
+            //Test 5:
             AlarmClock time5 = new AlarmClock(6, 12, 6, 15);
-            Console.WriteLine("Test 5.");
-            Console.WriteLine("Ställer klockan till 23:58 och låter den gå 13 minuter. \n");
+            horizontalLine = "\n════════════════════════════════════════\n\nTest 5.\nTest av konstruktorn med fyra parametrar, <6, 12, 6, 15>.\n";
+            ViewTestHeader(horizontalLine);
             Run(time5, 6);
-            Console.WriteLine("\n{0}\n", horizontalLine);
 
-
-            Console.WriteLine("Test 6.");
-            Console.WriteLine("Testar egenskaperna så att undantag kastas då tid och alarmtid tilldelas felaktiga värden. \n");
+            //Test 6:
+            horizontalLine = "\n════════════════════════════════════════\n\nTest 6.\nTestar egenskaperna så att undantag kastas då tid och alarmtid tilldelas felaktiga värden.\n";
+            ViewTestHeader(horizontalLine);
             try
             {
                 time5.Hour = -1;
@@ -92,10 +90,10 @@ namespace digitalvackarklockaA
             {
                 ViewErrorMessage(test6.Message);
             }
-            Console.WriteLine("\n{0}\n", horizontalLine);
 
-            Console.WriteLine("Test 7.");
-            Console.WriteLine("Testar egenskaperna så att undantag kastas då tid och alarmtid tilldelas felaktiga värden. \n");
+            //Test 7:
+            horizontalLine = "\n════════════════════════════════════════\n\nTest 7.\nTestar konstruktorerna så att undantag kastas då tid och alarmtid tilldelas felaktiga värden.\n";
+            ViewTestHeader(horizontalLine);
             try
             {
                 AlarmClock time7 = new AlarmClock(-1, -2);
@@ -114,34 +112,28 @@ namespace digitalvackarklockaA
             }
         }
 
-        private static void Run(AlarmClock time, int minutes)
+        private static void Run(AlarmClock time, int minutes)       //Kör klockan och skriver ut tiden och eventuellt drar igång alarmet. 
         {
-            //Två parametrar. 1 - referens till AlarmClock-objekt
-            //                2 - Antalet minuter som AlarmClock-objektet ska gå.
-            //                      genom att låta ett AlarmClock-objekt göra upprepade anrop av metoden TickTock()
-
             for (int i = 0; i < minutes; i++)
-            {
-
-
-                if (time.TickTock())
                 {
-                    Console.BackgroundColor = ConsoleColor.Blue;
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("{0} BEEP BEEP", time);
-                    Console.ResetColor();
+                    if (time.TickTock())
+                    {
+                        Console.BackgroundColor = ConsoleColor.Blue;
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("{0} BEEP BEEP", time);
+                        Console.ResetColor();
+                    }
+                    else
+                    {
+                        Console.WriteLine(time);
+                    }
                 }
-                else
-                {
-                    Console.WriteLine(time);
-                }
-            }
             
             
             //Console.WriteLine(time.ToString());
         }
 
-        private static void ViewErrorMessage(string message)
+        private static void ViewErrorMessage(string message)        //Hämtar felmeddelanden från egenskaperna i AlarmClock.cs
         {
 
             Console.BackgroundColor = ConsoleColor.Red;
@@ -150,7 +142,9 @@ namespace digitalvackarklockaA
             Console.ResetColor();
         }
 
-        private static void ViewTestHeader()
-        { }
+        private static void ViewTestHeader(string message)      //Används för att skriva ut meddelanden under testkörningen.
+        { 
+            Console.WriteLine(message);
+        }
     }
 }

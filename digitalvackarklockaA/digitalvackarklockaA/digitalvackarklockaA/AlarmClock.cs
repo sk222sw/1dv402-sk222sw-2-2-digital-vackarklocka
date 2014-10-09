@@ -27,7 +27,7 @@ namespace digitalvackarklockaA
                 _alarmHour = value;
 
             }
-        }         
+        }               //Kapslar in _alarmHour och testar så att tiden inte går utanför klockans gränser.
 
         public int AlarmMinute
         {
@@ -40,7 +40,7 @@ namespace digitalvackarklockaA
                 }
                 _alarmMinute = value;
             }
-        }       //get set klar
+        }               //Kapslar in _alarmMinute och testar så att tiden inte går utanför klockans gränser.
 
         public int Hour
         {
@@ -53,7 +53,7 @@ namespace digitalvackarklockaA
                 }
                 _hour = value;
             }
-        }              //get set klar
+        }                    //Kapslar in _hour och testar så att tiden inte går utanför klockans gränser.
 
         public int Minute
         {
@@ -66,7 +66,7 @@ namespace digitalvackarklockaA
                 }
                 _minute = value;
             }
-        }            //get set klar
+        }                   //Kapslar in _minute och testar så att tiden inte går utanför klockans gränser.
 
         public AlarmClock()             //ärver från den AlarmClock-konstruktor som har 2 parametrar.
             : this(0, 0)
@@ -84,10 +84,10 @@ namespace digitalvackarklockaA
             Minute = minute;
         }
 
-        public bool TickTock()
+        public bool TickTock()          //Metod som får klockan att gå en minut.
         {
 
-            if (Minute == 59)
+            if (Minute == 59)           //Ser till att tiden aldrig går över 23 för timmar, och 59 för minuter.
             {
                 Minute = 0;
 
@@ -98,7 +98,7 @@ namespace digitalvackarklockaA
             }
             Minute++;
             
-            if (Hour == AlarmHour && Minute == AlarmMinute)
+            if (Hour == AlarmHour && Minute == AlarmMinute)     //Får alarmet att gå igång om när klockan når alarmtiden. 
             {
                 return true;
             }
@@ -109,9 +109,9 @@ namespace digitalvackarklockaA
             
         }
 
-        public override string ToString()
+        public override string ToString()           //Metod som formaterar tid och alarm till en sträng.
         {
-                return string.Format(" {0}:{1:D2} <{2}:{3:D2}>", Hour, Minute, AlarmHour, AlarmMinute);  
+                return string.Format(" {0}:{1:D2} ({2}:{3:D2})", Hour, Minute, AlarmHour, AlarmMinute);  
         }
 
     }
