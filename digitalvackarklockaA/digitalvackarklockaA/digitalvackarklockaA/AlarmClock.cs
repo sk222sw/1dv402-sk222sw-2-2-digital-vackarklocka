@@ -22,7 +22,7 @@ namespace digitalvackarklockaA
             {
                 if (value < 0 || value > 23)
                 {
-                    throw new ArgumentException("Timmen måste vara mellan 0 och 23.");
+                    throw new ArgumentException("Alarmtimmen måste vara mellan 0 och 23.");
                 }
                 _alarmHour = value;
 
@@ -36,7 +36,7 @@ namespace digitalvackarklockaA
             {
                 if (value < 0 || value > 59)
                 {
-                    throw new ArgumentException("Minuten måste vara mellan 0 och 59.");
+                    throw new ArgumentException("Alarmminuten måste vara mellan 0 och 59.");
                 }
                 _alarmMinute = value;
             }
@@ -111,11 +111,7 @@ namespace digitalvackarklockaA
 
         public override string ToString()
         {
-
-                return string.Format(" {0}:{1:D2} <{2}:{3:D2}>", 
-                    Hour, Minute, AlarmHour, AlarmMinute);  
-
-
+                return string.Format(" {0}:{1:D2} <{2}:{3:D2}>", Hour, Minute, AlarmHour, AlarmMinute);  
         }
 
     }
