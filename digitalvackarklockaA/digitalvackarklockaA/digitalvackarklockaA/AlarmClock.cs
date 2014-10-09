@@ -13,6 +13,8 @@ namespace digitalvackarklockaA
         private int _hour;
         private int _minute;
 
+
+
         public int AlarmHour
         {
             get { return _alarmHour; }
@@ -20,12 +22,12 @@ namespace digitalvackarklockaA
             {
                 if (value < 0 || value > 23)
                 {
-                    throw new ArgumentException();
+                    throw new ArgumentException("Timmen måste vara mellan 0 och 23.");
                 }
                 _alarmHour = value;
 
             }
-        }         //get set klar
+        }         
 
         public int AlarmMinute
         {
@@ -34,7 +36,7 @@ namespace digitalvackarklockaA
             {
                 if (value < 0 || value > 59)
                 {
-                    throw new ArgumentException();
+                    throw new ArgumentException("Minuten måste vara mellan 0 och 59.");
                 }
                 _alarmMinute = value;
             }
@@ -47,7 +49,7 @@ namespace digitalvackarklockaA
             {
                 if (value < 0 || value > 23)
                 {
-                    throw new ArgumentException();
+                    throw new ArgumentException("Timmen måste vara mellan 0 och 23.");
                 }
                 _hour = value;
             }
@@ -60,7 +62,7 @@ namespace digitalvackarklockaA
             {
                 if (value < 0 || value > 59)
                 {
-                    throw new ArgumentException();
+                    throw new ArgumentException("Minuten måste vara mellan 0 och 59.");
                 }
                 _minute = value;
             }
@@ -84,17 +86,18 @@ namespace digitalvackarklockaA
 
         public bool TickTock()
         {
-            Minute++;
-            if (Minute > 59)
+
+            if (Minute == 59)
             {
                 Minute = 0;
-                Hour++;
-                if (Hour > 23)
+
+                if (Hour == 23)
                 {
                     Hour = 0;
                 }
             }
-
+            Minute++;
+            
             if (Hour == AlarmHour && Minute == AlarmMinute)
             {
                 return true;
@@ -108,14 +111,9 @@ namespace digitalvackarklockaA
 
         public override string ToString()
         {
-            if (Minute < 10)
-            {
-                return string.Format("{0}:0{}", Hour, Minute);
-            }
-            else
-            {
-                return string.Format("{0}:0{}", Hour, Minute);
-            }
+
+                return string.Format(" {0}:{1:D2} <{2}:{3:D2}>", 
+                    Hour, Minute, AlarmHour, AlarmMinute);  
 
 
         }

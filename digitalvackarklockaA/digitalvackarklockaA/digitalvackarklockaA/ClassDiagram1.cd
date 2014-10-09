@@ -7,8 +7,8 @@
       <FileName>AlarmClock.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="digitalvackarklockaA.Program" Collapsed="true">
-    <Position X="6" Y="0.75" Width="1.5" />
+  <Class Name="digitalvackarklockaA.Program">
+    <Position X="6" Y="0.75" Width="2" />
     <TypeIdentifier>
       <HashCode>AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAACAAI=</HashCode>
       <FileName>Program.cs</FileName>
