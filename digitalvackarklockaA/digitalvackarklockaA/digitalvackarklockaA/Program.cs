@@ -32,35 +32,35 @@ namespace digitalvackarklockaA
             Console.WriteLine("\n{0}\n", time);
 
             //Test 2:
-            AlarmClock time2 = new AlarmClock(9, 42);
+            time = new AlarmClock(9, 42);
             horizontalLine = "\n════════════════════════════════════════\n\nTest 2.\nTest av konstruktorn med två parametrar, <9, 42>.";
             ViewTestHeader(horizontalLine);
-            Console.WriteLine("\n{0}\n", time2);
+            Console.WriteLine("\n{0}\n", time);
 
             //Test 3:
-            AlarmClock time3 = new AlarmClock(13, 24, 7, 35);
+            time = new AlarmClock(13, 24, 7, 35);
             horizontalLine = "\n════════════════════════════════════════\n\nTest 3.\nTest av konstruktorn med fyra parametrar, <13, 24, 7, 35>.";
             ViewTestHeader(horizontalLine);
-            Console.WriteLine("\n{0}\n", time3);
+            Console.WriteLine("\n{0}\n", time);
 
             //Test 4:
-            AlarmClock time4 = new AlarmClock(23, 58, 7, 35);
+            time = new AlarmClock(22, 58, 7, 35);
             horizontalLine = "\n════════════════════════════════════════\n\nTest 4.\nTest av konstruktorn med fyra parametrar, <23, 58, 7, 35>.\n";
             ViewTestHeader(horizontalLine);
-            Run(time4, 13);
+            Run(time, 13);
 
             //Test 5:
-            AlarmClock time5 = new AlarmClock(6, 12, 6, 15);
+            time = new AlarmClock(6, 12, 6, 15);
             horizontalLine = "\n════════════════════════════════════════\n\nTest 5.\nTest av konstruktorn med fyra parametrar, <6, 12, 6, 15>.\n";
             ViewTestHeader(horizontalLine);
-            Run(time5, 6);
+            Run(time, 6);
 
             //Test 6:
             horizontalLine = "\n════════════════════════════════════════\n\nTest 6.\nTestar egenskaperna så att undantag kastas då tid och alarmtid tilldelas felaktiga värden.\n";
             ViewTestHeader(horizontalLine);
             try
             {
-                time5.Hour = -1;
+                time.Hour = -1;
             }
             catch (ArgumentException test6)
             {
@@ -68,7 +68,7 @@ namespace digitalvackarklockaA
             }
             try
             {
-                time5.Minute = -1;
+                time.Minute = -1;
             }
             catch (ArgumentException test6)
             {
@@ -76,7 +76,7 @@ namespace digitalvackarklockaA
             }
             try
             {
-                time5.AlarmHour = -1;
+                time.AlarmHour = -1;
             }
             catch (ArgumentException test6)
             {
@@ -84,7 +84,7 @@ namespace digitalvackarklockaA
             }
             try
             {
-                time5.AlarmMinute = -1;
+                time.AlarmMinute = -1;
             }
             catch (ArgumentException test6)
             {
@@ -135,7 +135,6 @@ namespace digitalvackarklockaA
 
         private static void ViewErrorMessage(string message)        //Hämtar felmeddelanden från egenskaperna i AlarmClock.cs
         {
-
             Console.BackgroundColor = ConsoleColor.Red;
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(message);

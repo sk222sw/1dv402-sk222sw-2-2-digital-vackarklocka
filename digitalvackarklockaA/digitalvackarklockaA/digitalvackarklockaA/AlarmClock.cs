@@ -91,11 +91,16 @@ namespace digitalvackarklockaA
             {
                 Minute = 0;
 
-                if (Hour == 23)
+                if (Hour != 23)
+                {
+                    Hour++;
+                }
+                else
                 {
                     Hour = 0;
                 }
             }
+
             Minute++;
             
             if (Hour == AlarmHour && Minute == AlarmMinute)     //Får alarmet att gå igång om när klockan når alarmtiden. 
